@@ -47,15 +47,26 @@ cart.addEventListener("click",function(e){
     if ((targeta.id ==="kart")||(targeta.id ==="kartnum")){
         cartOn();
     } else if(targeta.classList.value ==="buy"){
-        let watchName=targeta.previousElementSibling.previousElementSibling.textContent
+        let watchName=targeta.previousElementSibling.previousElementSibling.textContent;
         for(let i=0; i< products.length; i++)
             if(watchName === products[i].name){
                 // Checking if product on cart
                 if(cartArray.some((item) => item.id === products[i].id)){
                     products[i].quant+=1;
                     caltotal();
-                    console.log(cartArray);
-                    // alert("Product already on cart!")
+
+                    // console.log(products[i].name);
+                    let scanHtml=document.querySelectorAll(".itens-cart");
+                    for(let j=0;j<scanHtml.length;j++){
+                        // console.log(scanHtml[j].firstElementChild.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling);
+                        if(products[i].name===scanHtml[j].firstElementChild.firstElementChild.nextElementSibling.textContent){
+                            let scanNum=scanHtml[j].firstElementChild.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling;
+                            scanNum.innerHTML=products[i].quant;
+                        }
+                    }
+               
+    
+                   
                 }else{
                     updateArray(products[i],1)
                     render(i)
@@ -99,13 +110,13 @@ function caltotal(){
     }
     // console.log(totalPrice);
     cartIcon.innerText=totalItens;
-    return cartTotal.innerText=totalPrice;
+    return cartTotal.innerText="CA$ "+totalPrice;
 }
 
 
-// Rendering HTML Itens
+// Function to render HTML Itens
 function render(e){
-//put in the event listener
+
 
         purchase.innerHTML += `
             <div class="itens-cart">
@@ -179,7 +190,20 @@ qtysec.addEventListener("click",function(e){
             }
         }
     }else if(qtytar.id==="minus"){
-        
+        let subtotalEach=qtytar.parentNode.nextElementSibling.lastElementChild;
+        // console.log(qtytar.nextElementSibling);
+        let pagename=qtytar.parentNode.previousElementSibling.previousElementSibling.textContent;
+        let pagenum=qtytar.nextElementSibling;
+        for(let i=0; i < cartArray.length; i++){
+            if(pagename===cartArray[i].name){
+                if(cartArray[i].quant>1){
+                    cartArray[i].quant=cartArray[i].quant-1;
+                    pagenum.innerHTML=cartArray[i].quant;
+                    caltotal();
+                    subtotalEach.innerHTML="CA$ "+(cartArray[i].price*cartArray[i].quant)
+                }
+            }
+        }
     }
 })
 

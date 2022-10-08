@@ -158,7 +158,9 @@ nav:hover{
     border: 2px solid red;
     opacity:100%;
     padding: 15px;
-
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     /* removed the overflow of the cart //////////////*/
     box-sizing: border-box;
     
@@ -254,7 +256,6 @@ nav:hover{
     font-size: large;
     /* border: 2px solid red; */
     display:flex;
-    /* align-items: center; */
     justify-content: center;
     
 }
@@ -350,8 +351,9 @@ nav:hover{
     bottom: 10px;
     display: flex;
     flex-direction: column;
-    border: 2px solid green;
+    /* border: 2px solid green; */
     justify-self: center;
+    align-self: center;
     box-sizing: border-box;
 }
 .total{
@@ -377,6 +379,7 @@ nav:hover{
 .checkout:hover{
     cursor: pointer;
     background-color: #d6da00;
+    border: 2px solid black;
 }
 .checkout:active{
     box-shadow: 0 5px #666;
