@@ -58,10 +58,13 @@ cart.addEventListener("click",function(e){
                     // console.log(products[i].name);
                     let scanHtml=document.querySelectorAll(".itens-cart");
                     for(let j=0;j<scanHtml.length;j++){
-                        // console.log(scanHtml[j].firstElementChild.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling);
+                        // console.log(scanHtml[j].firstElementChild.lastElementChild.previousElementSibling.lastElementChild.innerHTML);
                         if(products[i].name===scanHtml[j].firstElementChild.firstElementChild.nextElementSibling.textContent){
                             let scanNum=scanHtml[j].firstElementChild.lastElementChild.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling;
+                            let scanTotal=scanNum.parentNode.nextElementSibling.lastElementChild;
+                            console.log(scanNum.parentNode.nextElementSibling.lastElementChild.innerHTML);
                             scanNum.innerHTML=products[i].quant;
+                            scanTotal.innerHTML="CA$ "+products[i].quant*products[i].price;
                         }
                     }
                
@@ -173,7 +176,11 @@ qtysec.addEventListener("click",function(e){
                 updateArray(i,-1);
             }
         }
-        delitem.parentNode.removeChild(delitem);
+        const cart = document.querySelector(".cart-content") //  <---------- selecting the cart
+        cart.removeChild(delitem.parentNode) //  <---------- removing the targetted item
+
+
+        // delitem.parentNode.removeChild(delitem);
         
     }else if(qtytar.id==="plus"){
         // console.log(qtytar.parentNode.nextElementSibling.lastElementChild.innerHTML);
@@ -186,7 +193,7 @@ qtysec.addEventListener("click",function(e){
                 cartArray[i].quant=cartArray[i].quant+1;
                 pagenum.innerHTML=cartArray[i].quant;
                 caltotal();
-                subtotalEach.innerHTML="$CA "+(cartArray[i].price*cartArray[i].quant)
+                subtotalEach.innerHTML="CA$ "+(cartArray[i].price*cartArray[i].quant)
             }
         }
     }else if(qtytar.id==="minus"){

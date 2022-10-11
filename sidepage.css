@@ -155,7 +155,7 @@ nav:hover{
     width: 100%;
     height: 100%;
     background-color: white;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     opacity:100%;
     padding: 15px;
     display: flex;
@@ -193,8 +193,8 @@ nav:hover{
 .cart-icon{
     position: absolute;
     right: 30px;
-    height: 45px;
-    width: 45px;
+    height: 35px;
+    width: 35px;
     background-image: url("shopping-cart.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -215,11 +215,11 @@ nav:hover{
 .cart-num{
     background-color: yellow;
     display: block;
-    font-size: 1rem;
+    /* font-size: 1rem; */
     font-weight: bold;
     border-radius: 50% 50%;
-    height: 22px;
-    width: 22px;
+    height: 18px;
+    width: 18px;
     text-align: center;
 }
 /* .cart-icon img{
